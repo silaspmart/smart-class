@@ -15,12 +15,15 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-  "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-  "build": "tsc",
-  "start": "node dist/server.js"
-},
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
   "dependencies": {
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "mysql2": "^3.22.4",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^1.0.0"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
