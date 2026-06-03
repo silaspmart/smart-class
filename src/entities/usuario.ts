@@ -30,7 +30,7 @@ export class Usuario {
     type: "enum",
     enum: TipoUsuario,
   })
-  tipoUsuario: TipoUsuario;
+  perfil: TipoUsuario;
 
   @Column({ default: true })
   ativo: boolean;
