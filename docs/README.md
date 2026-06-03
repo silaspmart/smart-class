@@ -29,16 +29,16 @@ Antes de começar, certifique-se de ter instalado na sua máquina:
 - Node.js
 - PostgreSQL
 
-### Passo a passo
+## Passo a passo
 
-**Instale as dependências do projeto**
+**Instale as dependências do projeto:**
 
 npm install
 
-**Inicie o servidor em modo de desenvolvimento**
+**Inicie o servidor em modo de desenvolvimento:**
 
 npm run dev
 
 ## Projeto Integrador
 
-Sistema desenvolvido como parte do Projeto Integrador, aplicando conceitos de desenvolvimento de software para solucionar demandas do ambiente escolar
+Sistema desenvolvido como parte do Projeto Integrador, aplicando conceitos de desenvolvimento de software para solucionar demandas do ambiente escolar.
