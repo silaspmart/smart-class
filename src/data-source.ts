@@ -10,7 +10,7 @@ const options: DataSourceOptions = {
   database: process.env.DB_DATABASE,
   synchronize: true,
   logging: true,
-  entities: [],
+  entities: ["src/entities/*.ts"],
   migrations: [],
   subscribers: [],
 };
