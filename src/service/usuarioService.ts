@@ -46,7 +46,7 @@ export class UsuarioService {
     if (dados.email) {
       usuario.email = dados.email;
     }
-    if (dados.ativo) {
+    if (dados.ativo !== undefined) {
       usuario.ativo = dados.ativo;
     }
     return await this.repository.save(usuario);
