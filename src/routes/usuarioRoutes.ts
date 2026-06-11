@@ -15,9 +15,9 @@ usuarioRoutes.get("/ativos", (req, res) =>
 usuarioRoutes.get("/:id", (req, res) => usuarioController.listId(req, res));
 
 usuarioRoutes.patch("/:id", (req, res) =>
-  usuarioController.atualizar(req, res)
+  usuarioController.update(req, res)
 );
 
-usuarioRoutes.delete("/:id", (req, res) => usuarioController.deletar(req, res));
+usuarioRoutes.delete("/:id", (req, res) => usuarioController.delete(req, res));
 
 export default usuarioRoutes;
