@@ -4,7 +4,11 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne, 
+  JoinColumn,
 } from "typeorm";
+import { Aluno } from "./aluno";
+import { Disciplina } from "./disciplina";
 
 export enum StatusFrequencia {
   PRESENTE = "PRESENTE",
@@ -28,8 +32,13 @@ export class Frequencia {
   })
   status: StatusFrequencia;
 
-  @Column()
-  alunoId: number;
+  @ManyToOne(() => Aluno)
+  @JoinColumn({ name: "aluno_id" })
+  aluno: Aluno;
+
+  @ManyToOne(() => Disciplina)
+  @JoinColumn({ name: "disciplina_id" })
+  disciplina: Disciplina;
 
   @CreateDateColumn()
   criadoEm: Date;
