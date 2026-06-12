@@ -34,7 +34,7 @@ export class UsuarioController {
     return res.status(200).json(usuarios);
   }
 
-  async atualizar(req: Request, res: Response) {
+  async update(req: Request, res: Response) {
     try {
       const usuario = await this.service.update(
         Number(req.params.id),
@@ -48,7 +48,7 @@ export class UsuarioController {
     }
   }
 
-  async deletar(req: Request, res: Response) {
+  async delete(req: Request, res: Response) {
     try {
       const resultado = await this.service.delete(Number(req.params.id));
       return res.json(resultado);
