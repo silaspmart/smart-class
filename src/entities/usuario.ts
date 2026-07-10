@@ -8,18 +8,18 @@ export enum TipoUsuario {
 }
 
 @Entity("usuarios")
-export class Usuario extends BaseEntityAtivo {
+export abstract class Usuario extends BaseEntityAtivo {
   @Column()
-  private _nome: string;
+  protected _nome: string;
 
   @Column({ unique: true })
-  private _email: string;
+  protected _email: string;
 
   @Column()
-  private _senha: string;
+  protected _senha: string;
 
   @Column({ type: "enum", enum: TipoUsuario })
-  private _perfil: TipoUsuario;
+  protected _perfil: TipoUsuario;
 
   @Column({ nullable: true })
   ultimoLogin: Date;
@@ -52,13 +52,6 @@ export class Usuario extends BaseEntityAtivo {
     return this._perfil;
   }
 
-  set perfil(valor: TipoUsuario) {
-    if (!Object.values(TipoUsuario).includes(valor)) {
-      throw new Error("Tipo de usuário inválido.");
-    }
-    this._perfil = valor;
-  }
-
   // --- Métodos de Domínio ---
   registrarLogin(): void {
     this.ultimoLogin = new Date();
@@ -74,7 +67,12 @@ export class Usuario extends BaseEntityAtivo {
     this._senha = novaSenha;
   }
 
-  isFuncionario(): boolean {
-    return this._perfil === TipoUsuario.FUNCIONARIO;
+  // --- Método abstrato (cada subclasse deve implementar) ---
+  abstract descreverPermissoes(): string[];
+
+  // --- Método concreto com polimorfismo ---
+  temPermissao(acao: string): boolean {
+    const permissoes = this.descreverPermissoes();
+    return permissoes.includes(acao);
   }
 }
