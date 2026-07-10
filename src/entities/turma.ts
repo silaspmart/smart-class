@@ -12,15 +12,14 @@ export enum Turno {
 
 @Entity("turmas")
 export class Turma extends BaseEntityAtivo {
-  @Column()
+  @Column({ type: "varchar" })
   private _nome: string;
 
   @Column({ type: "enum", enum: Turno })
   private _turno: Turno;
 
-  @Column()
+  @Column({ type: "int" })
   private _anoLetivo: number;
-
 
   @OneToMany("Aluno", "turma")
   alunos: Aluno[];

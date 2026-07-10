@@ -6,10 +6,10 @@ import type { Responsavel } from "./responsavel";
 
 @Entity("alunos")
 export class Aluno extends BaseEntityAtivo {
-  @Column({ unique: true })
+  @Column({ type: "varchar" })
   private _matricula: string;
 
-  @Column()
+  @Column({ type: "varchar" })
   private _nome: string;
 
   @Column({ type: "date" })

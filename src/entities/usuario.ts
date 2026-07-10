@@ -9,19 +9,19 @@ export enum TipoUsuario {
 
 @Entity("usuarios")
 export class Usuario extends BaseEntityAtivo {
-  @Column()
+  @Column({ type: "varchar" })
   private _nome: string;
 
-  @Column({ unique: true })
+  @Column({ type: "varchar", unique: true })
   private _email: string;
 
-  @Column()
+  @Column({ type: "varchar" })
   private _senha: string;
 
   @Column({ type: "enum", enum: TipoUsuario })
   private _perfil: TipoUsuario;
 
-  @Column({ nullable: true })
+  @Column({ type: "timestamp", nullable: true })
   ultimoLogin: Date;
 
   // --- Encapsulamento ---

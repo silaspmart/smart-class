@@ -4,7 +4,7 @@ import { Turma } from "./turma";
 
 @Entity("disciplinas")
 export class Disciplina extends BaseEntityAtivo {
-  @Column({ unique: true })
+  @Column({ type: "varchar" })
   private _nome: string;
 
   @ManyToMany(() => Turma, (turma) => turma.disciplinas)

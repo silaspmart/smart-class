@@ -4,13 +4,13 @@ import type { Aluno } from "./aluno";
 
 @Entity("responsaveis")
 export class Responsavel extends BaseEntityAtivo {
-  @Column()
+  @Column({ type: "varchar" })
   private _nome: string;
 
-  @Column({ unique: true, length: 11 })
+  @Column({ type: "varchar", unique: true })
   private _cpf: string;
 
-  @Column({ unique: true })
+  @Column({ type: "varchar", unique: true })
   private _email: string;
 
   @OneToMany("Aluno", "responsavel")
