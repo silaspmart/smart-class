@@ -1,16 +1,13 @@
 import { Entity, Column, ManyToOne, OneToMany, JoinColumn } from "typeorm";
-import { BaseEntityAtivo } from "./baseEntityAtivo";
+import { Usuario, TipoUsuario } from "./usuario";
 import { Frequencia } from "./frequencia";
 import type { Turma } from "./turma";
 import type { Responsavel } from "./responsavel";
 
 @Entity("alunos")
-export class Aluno extends BaseEntityAtivo {
-  @Column({ type: "varchar" })
+export class Aluno extends Usuario {
+  @Column({ type: "varchar", unique: true })
   private _matricula: string;
-
-  @Column({ type: "varchar" })
-  private _nome: string;
 
   @Column({ type: "date" })
   private _dataNascimento: Date;
@@ -26,6 +23,12 @@ export class Aluno extends BaseEntityAtivo {
   @OneToMany(() => Frequencia, (frequencia) => frequencia.aluno)
   frequencias: Frequencia[];
 
+  constructor() {
+    super();
+    this._perfil = TipoUsuario.ALUNO;
+  }
+
+  // --- Encapsulamento ---
   get matricula(): string {
     return this._matricula;
   }
@@ -35,17 +38,6 @@ export class Aluno extends BaseEntityAtivo {
       throw new Error("A matrícula não pode ser vazia.");
     }
     this._matricula = valor.trim().toUpperCase();
-  }
-
-  get nome(): string {
-    return this._nome;
-  }
-
-  set nome(valor: string) {
-    if (!valor || valor.trim().length < 3) {
-      throw new Error("O nome deve ter pelo menos 3 caracteres.");
-    }
-    this._nome = valor.trim();
   }
 
   get dataNascimento(): Date {
@@ -58,6 +50,7 @@ export class Aluno extends BaseEntityAtivo {
     this._dataNascimento = valor;
   }
 
+  // --- Métodos de Domínio ---
   calcularIdade(): number {
     const hoje = new Date();
     const nascimento = new Date(this._dataNascimento);
@@ -67,6 +60,10 @@ export class Aluno extends BaseEntityAtivo {
       idade--;
     }
     return idade;
+  }
+
+  isMaiorDeIdade(): boolean {
+    return this.calcularIdade() >= 18;
   }
 
   vincularTurma(turma: Turma): void {
@@ -81,5 +78,10 @@ export class Aluno extends BaseEntityAtivo {
       throw new Error("Não é possível vincular a um responsável inativo.");
     }
     this.responsavel = responsavel;
+  }
+
+  // ✅ Implementação do método abstrato
+  descreverPermissoes(): string[] {
+    return ["VISUALIZAR_PROPRIA_FREQUENCIA", "VISUALIZAR_PROPRIO_REGISTRO"];
   }
 }

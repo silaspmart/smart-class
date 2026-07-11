@@ -1,5 +1,5 @@
 import { Column } from "typeorm";
-import { BaseEntity } from "./baseEntity";
+import { BaseEntity } from "./baseEntity.js";
 
 export abstract class BaseEntityAtivo extends BaseEntity {
   @Column({

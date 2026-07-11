@@ -19,7 +19,7 @@ export class Usuario extends BaseEntityAtivo {
   private _senha: string;
 
   @Column({ type: "enum", enum: TipoUsuario })
-  private _perfil: TipoUsuario;
+  _perfil: TipoUsuario;
 
   @Column({ type: "timestamp", nullable: true })
   ultimoLogin: Date;
