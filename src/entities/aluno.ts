@@ -6,7 +6,11 @@ import type { Responsavel } from "./responsavel";
 
 @Entity("alunos")
 export class Aluno extends Usuario {
+<<<<<<< HEAD
   @Column({ type: "varchar", unique: true })
+=======
+  @Column({ unique: true })
+>>>>>>> eefad2cb5e7c8b29d094a464cbcca4cba853b650
   private _matricula: string;
 
   @Column({ type: "date" })
@@ -82,6 +86,15 @@ export class Aluno extends Usuario {
 
   // ✅ Implementação do método abstrato
   descreverPermissoes(): string[] {
+<<<<<<< HEAD
     return ["VISUALIZAR_PROPRIA_FREQUENCIA", "VISUALIZAR_PROPRIO_REGISTRO"];
   }
 }
+=======
+    return [
+      "VISUALIZAR_PROPRIA_FREQUENCIA",
+      "VISUALIZAR_PROPRIO_REGISTRO",
+    ];
+  }
+}
+>>>>>>> eefad2cb5e7c8b29d094a464cbcca4cba853b650

@@ -50,4 +50,8 @@ export class Funcionario extends Usuario {
   isCoordenador(): boolean {
     return this._cargo.toUpperCase().includes("COORDENADOR");
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> eefad2cb5e7c8b29d094a464cbcca4cba853b650
